@@ -1,0 +1,376 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jon Carter UI/UX Designer</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+            <a class="navbar-brand mx-lg-auto mb-lg-4" href="#">
+                <span class="h3 fw-bold d-block d-lg-none">Mohammad Karimzadeh</span>
+                <img src="{% static 'images/person.jpg' %}" class="d-none d-lg-block rounded-circle" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#work">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Skill</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Latest Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- //NAVBAR -->
+
+    <!-- CONTENT WRAPPER -->
+    <div id="content-wrapper">
+
+        <!-- HOME -->
+        <section id="home" class="full-height px-lg-5">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h1 class="display-4 fw-bold" data-aos="fade-up">I'M A <span class="text-brand">WEB DEVELOPER AND AI ENGINEER</span></h1>
+                        <p class="lead mt-2 mb-4" data-aos="fade-up" data-aos-delay="300">I am an artificial intelligence engineer and web designer who is interested in creating innovative and creative solutions to complex problems. My portfolio represents my achievements and capabilities in these two areas, and 
+                            I am looking for new and exciting opportunities to work with companies and specialist teams in the technology and software field.</p>
+                        <div data-aos="fade-up" data-aos-delay="600">
+                            <a href="#work" class="btn btn-brand me-3">Explore My Projects</a>
+                            <a href="#" class="link-custom">Email : mohamad.kz8846@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- //HOME -->
+
+        <!-- SERVICES -->
+        <section id="services" class="full-height px-lg-5">
+            <div class="container">
+
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">SERVICES</h6>
+                        <h1>Services That I Provide</h1>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+
+                    {% for ser in service %}
+                      
+                    
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-4">
+                                <i class="{{ser.logo}}"></i>
+                            </div>
+                            <h5 class="mt-4 mb-2">{{ser.title}}</h5>
+                            <p>{{ser.description}}</p>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section>
+        <!-- SERVICES -->
+
+        <!-- PROJECTS -->
+        <section id="work" class="full-height px-lg-5">
+            <div class="container">
+
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">PROJECTS</h6>
+                        <h1>My Recent Projects</h1>
+                    </div>
+                </div>
+
+                <div id="carouselExampleIndicators" class="carousel slide d-flex justify-content-evenly" data-bs-ride="true">
+                    
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        
+                  
+                    <div class="row carousel-inner">
+                        {% for group in project %}
+                        <div class="carousel-item {{ forloop.first|yesno:'active,' }}">
+                           {% for prd in group %}
+                            <div class="row g-4 p-4">
+                                <div class="col-md-6 g-4 p-4 container" data-aos="fade-up">
+                                    <div class="card-custom rounded-4 bg-base shadow-effect">
+                                        <div class="card-custom-image rounded-4">
+                                            <img style="max-width: 900px; max-height: 600px" class="rounded-4" src="{{prd.image}}" alt="">
+                                        </div>
+                                        <div class="card-custom-content p-4">
+                                            <h4>{{prd.title}}</h4>
+                                            <p>{{prd.description}}</p>
+                                            <a href="#" class="link-custom d-flex justify-content-evenly">Visit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>   
+                </div>
+            </div>
+        </section>
+        <!-- //WORK -->
+
+        <!-- ABOUT -->
+        <section id="about" class="full-height px-lg-5">
+            <div class="container">
+
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">SKILL</h6>
+                        <h1>My Skill</h1>
+                    </div>
+                </div>
+
+                <div class="row gy-5">
+                    
+                    <div class="col-lg-12">
+                        <div class="row gy-4">
+
+                            {% for exp in skill %}
+                            
+                            <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                                <div class="bg-base p-4 rounded-4 shadow-effect">
+                                    <h4>{{exp.name}}</h4>
+                                    <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-warning text-dark fw-bolder" style="width: {{exp.percentage}}%">{{exp.percentage}}%</div>
+                                      </div>
+                                      
+                                    <!-- <p class="mb-0">{{exp.percentage}}</p> -->
+                                </div>
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- //ABOUT -->
+
+        <!-- REVIEWS -->
+        <section id="reviews" class="full-height px-lg-5">
+            <div class="container">
+
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">EDUCATION</h6>
+                        <h1>Education and Experience</h1>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    {% for edu in education %}
+                      
+                    
+                    <div class="col-md-4" data-aos="fade-up">
+
+                        <div class="review shadow-effect bg-base p-4 rounded-4">
+                            <div class="text-brand h5">
+                                <p>{{edu.title}}</p>
+                            </div>
+                            <div class="person">
+                                <h5 class="my-3">{{edu.subject}}</h5>
+                                <p class="mb-0">{{edu.date}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section>
+        <!-- //REVIEWS -->
+
+        <!-- BLOG -->
+        <section id="blog" class="full-height px-lg-5">
+            <div class="container">
+
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">LATEST PROJECTS</h6>
+                        <h1>My Latest Projects</h1>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    {% for projects in latest_projects %}
+                    <div class="col-md-4" data-aos="fade-up">
+                        <div class="card-custom rounded-4 bg-base shadow-effect">
+                            <div class="card-custom-image rounded-4">
+                                <img class="rounded-4" src="{{projects.image}}" alt="">
+                            </div>
+                            <div class="card-custom-content p-4">
+                                <p class="text-brand mb-2">{{projects.title}}</p>
+                                <h5 class="mb-4">{{projects.description | truncatechars:20}}</h5>
+                                <a href="#" class="link-custom">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                   {% endfor %}
+                    <!-- <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-custom rounded-4 bg-base shadow-effect">
+                            <div class="card-custom-image rounded-4">
+                                <img class="rounded-4" src="{% static 'images/blog-post-2.jpg' %}" alt="">
+                            </div>
+                            <div class="card-custom-content p-4">
+                                <p class="text-brand mb-2">20 Dec, 2022</p>
+                                <h5 class="mb-4">Design a creative landing page using Bootstrap 5</h5>
+                                <a href="#" class="link-custom">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="card-custom rounded-4 bg-base shadow-effect">
+                            <div class="card-custom-image rounded-4">
+                                <img class="rounded-4" src="{% static 'images/blog-post-3.jpg' %}" alt="">
+                            </div>
+                            <div class="card-custom-content p-4">
+                                <p class="text-brand mb-2">20 Dec, 2022</p>
+                                <h5 class="mb-4">Design a creative landing page using Bootstrap 5</h5>
+                                <a href="#" class="link-custom">Read More</a>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+
+            </div>
+        </section>
+        <!-- //BLOG -->
+
+        <!-- CONTACT -->
+        <section id="contact" class="full-height px-lg-5">
+            <div class="container">
+
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8 pb-4" data-aos="fade-up">
+                        <h6 class="text-brand">CONTACT</h6>
+                        <h1>Interested in working together? Let's talk
+                        </h1>
+                    </div>
+
+                    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="300">
+                        {% if message_name %}
+
+                        <h2>Thanks {{ message_name }}.</h2>
+                          
+                        {% else %}
+                        <form method="post" class="row g-lg-3 gy-3">
+                            {% csrf_token %}
+                            <div class="form-group col-md-6">
+                                <input name="name" type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input name="email" type="email" class="form-control" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group col-12">
+                                <input name="subject" type="text" class="form-control" placeholder="Enter subject">
+                            </div>
+                            <div class="form-group col-12">
+                                <textarea name="message" rows="4" class="form-control" placeholder="Enter your message"></textarea>
+                            </div>
+                            <div class="form-group col-12 d-grid">
+                                <button type="submit" class="btn btn-brand">Contact me</button>
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <!-- //CONTACT -->
+
+        <!-- FOOTER -->
+        <footer class="py-5 px-lg-5">
+            <div class="container">
+                <div class="row gy-4 justify-content-between">
+                    <div class="col-auto">
+                        <p class="mb-0">Designed by <a href="#" class="fw-bold">Me</a></p>
+                    </div>
+                    <div class="col-auto">
+                        <div class="social-icons">
+                            <a href="#"><i class="lab la-instagram"></i></a>
+                            <a href="#"><i class="lab la-linkedin"></i></a>
+                            <a href="#"><i class="lab la-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- //FOOTER -->
+
+    </div>
+    <!-- //CONTENT WRAPPER -->
+
+
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
